@@ -27,13 +27,13 @@ const down_the_road_policy = ({ password, character, a, b}) => {
   return (matches.length >= a && matches.length <= b);
 };
 
-const first = (input) => {
-  return input.reduce((n, record) => n +(+down_the_road_policy(collect(record))), 0);
-}
-
 const official_policy = ({ password, character, a, b }) => {
   return password.charAt(a) === character ^ password.charAt(b) === character;
 };
+
+const first = (input) => {
+  return input.reduce((n, record) => n +(+down_the_road_policy(collect(record))), 0);
+}
 
 const second = (input) => {
   return input.reduce((n, record) => n +(+official_policy(collect(record))), 0);
