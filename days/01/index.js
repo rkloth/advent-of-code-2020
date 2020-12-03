@@ -8,8 +8,9 @@ const input = fs
   .sort((a, b) => a - b);
 
 /*
-  first puzzle as check
+  https://adventofcode.com/2020/day/1
 */
+
 const first = (input, target) => {
   for (let i = 0; i < input.length; i++)
     for (let j = 0; j < input.length; j++)
@@ -36,7 +37,7 @@ const first_pointers = (input, target) => {
 };
 
 /*
-  first puzzle, but ultra performant using only two traversals:
+  first puzzle, but optimal performant using only two traversals:
   - create object/hash of known values
     this allows for fast lookup later
   - traverse again and find whether
@@ -63,7 +64,7 @@ const second = (input, target) => {
           return input[i] * input[j] * input[k];
 };
 
-// nog ff open
+// to-do
 const second_hashmap = (input, target) => {
   for (let i = 0; i < input.length; i++) {
 
