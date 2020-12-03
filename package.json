@@ -1,0 +1,11 @@
+{
+  "name": "advent-of-code-2020",
+  "version": "1.0.0",
+  "description": "Advent of Code 2020 Solutions by Ricardo Kloth",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ricardo Kloth",
+  "license": "ISC"
+}
