@@ -46,6 +46,5 @@ const second = (input) => {
   ].reduce((trees, slope) => trees * nr_of_trees(input, slope), 1)
 }
 
-
 console.log('solution first', first(input));
 console.log('solution second', second(input));
