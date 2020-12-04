@@ -24,8 +24,7 @@ const initPassports = (input) => {
   return input.split("$").map((p) => collectPassport(p));
 };
 
-
-const VALID_PASSPORTS = [
+const REQUIRED_PASSPORT_FIELDS = [
   ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"].sort().join(""),
   ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"].sort().join(""),
 ];
@@ -56,7 +55,7 @@ const Validations = {
 };
 
 const isPassportFieldsPresent = (passport) => {
-  return VALID_PASSPORTS.includes(Object.keys(passport).sort().join(""));
+  return REQUIRED_PASSPORT_FIELDS.includes(Object.keys(passport).sort().join(""));
 };
 
 const isPassportDataValid = (passport) => {
