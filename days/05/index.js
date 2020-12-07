@@ -10,24 +10,14 @@ const input = fs
   .split("\n")
   .filter(Boolean);
 
-const bitsToInt = (bits) => {
-  return bits.reduce((acc, v) => {
-    return (acc << 1) | v;
-  });
-};
+
+const bitsToInt = (bits) => bits.reduce((acc, v) => (acc << 1) | v);
 
 const createSeatIdFrom = (encodedBoardingPass) => {
-  const rowAsBits = Array.from(encodedBoardingPass.substr(0, 7)).map((c) => {
-    if (c === "F") return 0;
-    if (c === "B") return 1;
-  });
+  const rowAsBitArray = Array.from(encodedBoardingPass.substr(0, 7)).map((c) => +(c === 'B'));
+  const colAsBitArray = Array.from(encodedBoardingPass.substr(7)).map((c) => +(c === 'R'));
 
-  const colAsBits = Array.from(encodedBoardingPass.substr(7)).map((c) => {
-    if (c === "R") return 1;
-    if (c === "L") return 0;
-  });
-
-  return bitsToInt(rowAsBits) * 8 + bitsToInt(colAsBits);
+  return bitsToInt(rowAsBitArray) * 8 + bitsToInt(colAsBitArray);
 };
 
 const first = (input) => {
@@ -35,16 +25,16 @@ const first = (input) => {
 };
 
 const second = (input) => {
-  const boardingPasses = input
+  const sortedBoardingPasses = input
     .map((boardingPass) => createSeatIdFrom(boardingPass))
     .sort((a, b) => a - b);
 
   for (
-    let i = 0, j = boardingPasses[i];
-    i < boardingPasses.length - 1;
+    let i = 0, j = sortedBoardingPasses[i];
+    i < sortedBoardingPasses.length - 1;
     i++, j++
   ) {
-    if (j !== boardingPasses[i]) return j;
+    if (j !== sortedBoardingPasses[i]) return j;
   }
 };
 
