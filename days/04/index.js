@@ -59,13 +59,12 @@ const isPassportFieldsPresent = (passport) => {
 };
 
 const isPassportDataValid = (passport) => {
-  return Object.keys(passport).map((k) => {
+  return Object.keys(passport).every((k) => {
     if (Validations.hasOwnProperty(k)) {
       return Validations[k](passport[k]);
     }
     return false;
-  })
-  .every((p) => p === true);
+  });
 };
 
 const first = (input) => {
