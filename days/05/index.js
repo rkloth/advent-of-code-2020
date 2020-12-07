@@ -11,13 +11,13 @@ const input = fs
   .filter(Boolean);
 
 
-const bitsToInt = (bits) => bits.reduce((acc, v) => (acc << 1) | v);
+const bitArrayToInt = (bits) => bits.reduce((acc, v) => (acc << 1) | v);
 
 const createSeatIdFrom = (encodedBoardingPass) => {
   const rowAsBitArray = Array.from(encodedBoardingPass.substr(0, 7)).map((c) => +(c === 'B'));
   const colAsBitArray = Array.from(encodedBoardingPass.substr(7)).map((c) => +(c === 'R'));
 
-  return bitsToInt(rowAsBitArray) * 8 + bitsToInt(colAsBitArray);
+  return bitArrayToInt(rowAsBitArray) * 8 + bitArrayToInt(colAsBitArray);
 };
 
 const first = (input) => {
