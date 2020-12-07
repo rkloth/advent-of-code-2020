@@ -14,12 +14,10 @@ const input = fs
 
 const uniqueItemsFrom = (items) => [...new Set(items)];
 const mergeArrays = (arrays) => arrays.reduce((a, b) => [...a, ...b]);
-const allArraysContain = (value, arrays) =>
-  arrays.every((a) => a.includes(value));
 
 const nrOfIntersections = (uniqueItems, arrays) => {
   return uniqueItems.reduce((count, value) => {
-    return count + +allArraysContain(value, arrays);
+    return count + Number(arrays.every((a) => a.includes(value)));
   }, 0);
 };
 
