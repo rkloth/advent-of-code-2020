@@ -17,7 +17,7 @@ const createSeatIdFrom = (encodedBoardingPass) => {
   const rowAsBitArray = Array.from(encodedBoardingPass.substr(0, 7)).map((c) => +(c === 'B'));
   const colAsBitArray = Array.from(encodedBoardingPass.substr(7)).map((c) => +(c === 'R'));
 
-  return bitArrayToInt(rowAsBitArray) * 8 + bitArrayToInt(colAsBitArray);
+  return bitArrayToInt(...rowAsBitArray, ...colAsBitArray);
 };
 
 const first = (input) => {
